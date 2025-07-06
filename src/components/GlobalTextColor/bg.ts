@@ -7,7 +7,7 @@ export const BgGreyFooter = "bg-[#323a3f]";
 export const brandName = "Blooming Children Academy";
 
 export const bgRed = "red-500";
-export const navBgColor = "bg-white";
+export const navBgColor = "bg-transparent";
 export const navHoverColor = "hover:bg-gray-100";
 
 export const navDarkBg = "dark:bg-gray-900";

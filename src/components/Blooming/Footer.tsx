@@ -1,6 +1,10 @@
 import { footerBg, container, sectionWrapper, logoWrapper, logoText, colTitle, linkList, linkItem, hrLine, copyright, socialWrapper, socialLink, socialIcon } from "../GlobalTextColor/GlobalFooter";
-
+import { footersData } from "../Array/FooterArray";
+import logo from "../../assets/BCA.svg"; // Adjust the path as necessary
+import { brandName } from "../GlobalTextColor/bg";
+import { FaFacebookF, FaDiscord, FaTwitter, FaGithub, FaDribbble } from "react-icons/fa";
 export default function Footer() {
+
   return (
        <footer className={`${footerBg}`}>
       <div className={`${container}`}>
@@ -8,44 +12,16 @@ export default function Footer() {
           <div className={`${logoWrapper}`}>
             <a href="https://flowbite.com/" className="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src={logo}
                 className="h-8 me-3"
                 alt="FlowBite Logo"
               />
-              <span className={logoText}>Flowbite</span>
+              <span className={logoText}>{brandName}</span>
             </a>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            {[
-              {
-                title: "Resources",
-                links: [
-                  { text: "Flowbite", url: "https://flowbite.com/" },
-                  { text: "Tailwind CSS", url: "https://tailwindcss.com/" },
-                ],
-              },
-              {
-                title: "Follow us",
-                links: [
-                  {
-                    text: "Github",
-                    url: "https://github.com/themesberg/flowbite",
-                  },
-                  {
-                    text: "Discord",
-                    url: "https://discord.gg/4eeurUVvTy",
-                  },
-                ],
-              },
-              {
-                title: "Legal",
-                links: [
-                  { text: "Privacy Policy", url: "#" },
-                  { text: "Terms & Conditions", url: "#" },
-                ],
-              },
-            ].map((section, i) => (
+            {footersData.map((section, i) => (
               <div key={i}>
                 <h2 className={colTitle}>{section.title}</h2>
                 <ul className={linkList}>
@@ -72,23 +48,20 @@ export default function Footer() {
             </a>
             . All Rights Reserved.
           </span>
-          <div className={socialWrapper}>
-            {[
-              "facebook",
-              "discord",
-              "twitter",
-              "github",
-              "dribbble",
-            ].map((type, i) => (
-              <a href="#" key={i} className={socialLink}>
-                <span className="sr-only">{type}</span>
-                {/* Placeholder SVG — You can replace each with specific icons */}
-                <svg className={socialIcon} fill="currentColor">
-                  <circle cx="10" cy="10" r="8" />
-                </svg>
-              </a>
-            ))}
-          </div>
+           <div className={socialWrapper}>
+      {[
+        { name: "facebook", icon: <FaFacebookF />, href: "#" },
+        { name: "discord", icon: <FaDiscord />, href: "#" },
+        { name: "twitter", icon: <FaTwitter />, href: "#" },
+        { name: "github", icon: <FaGithub />, href: "#" },
+        { name: "dribbble", icon: <FaDribbble />, href: "#" },
+      ].map((social, i) => (
+        <a href={social.href} key={i} className={socialLink}>
+          <span className="sr-only">{social.name}</span>
+          <span className={socialIcon}>{social.icon}</span>
+        </a>
+      ))}
+    </div>
         </div>
       </div>
     </footer>
